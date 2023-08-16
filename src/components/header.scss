@@ -1,0 +1,15 @@
+header {
+  position: relative;
+  background-color: #ddd;
+  padding: .1px 20px;
+  padding-bottom: 15px;
+  .auth {
+    padding: 10px;
+    align-items: center;
+    display: flex;
+    button {
+      margin-left: auto;
+    }
+  }
+  
+}

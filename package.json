@@ -11,12 +11,13 @@
   },
   "dependencies": {
     "firebase": "^10.1.0",
+    "firebaseui": "^6.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.1.2",
     "react-redux-firebase": "^3.11.0",
-    "redux": "^4.2.1",
-    "scss": "^0.2.4"
+    "react-router-dom": "^6.15.0",
+    "redux": "^4.2.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
@@ -26,6 +27,8 @@
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
+    "sass": "^1.65.1",
+    "scss": "^0.2.4",
     "vite": "^4.4.5"
   }
 }
