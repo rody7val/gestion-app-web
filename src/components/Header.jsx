@@ -18,13 +18,13 @@ export default function Header({auth}) {
           <button onClick={() => firebase.auth().signOut()}>Salir</button>
         </div>}
 
-        <h5>👨🏻‍💻 MI NEGOCIO</h5>
+        <h3>👨🏻‍💻 MI NEGOCIO</h3>
         <ul>
           <li>
-            <Link to="/">Sitio web</Link>
+            <Link to="/">Web</Link>
           </li>
           {auth === null && <li>
-            <Link to="/login">Acceder</Link>
+            <Link to="/auth/login">Acceder</Link>
           </li>}
           
           {auth !== null && <li>

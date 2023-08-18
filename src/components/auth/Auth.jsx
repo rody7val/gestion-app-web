@@ -20,7 +20,8 @@ new firebaseui.auth.AuthUI(firebase.auth());
         firebase.auth.PhoneAuthProvider.PROVIDER_ID
       ],
       signInSuccessUrl: "/admin",
-      privacyPolicyUrl: "/privacy-policy",
+      //privacyPolicyUrl: "/auth/privacy-policy",
+      //termOfServiceUrl: "/auth/term-of-service",
      });
   }, [firebase.auth()]);
 

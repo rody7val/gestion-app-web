@@ -4,7 +4,7 @@ function Home() {
       <main>
         <h4>Web</h4>
         <br />
-        <p>Datos públicos</p>
+        <p>Landing Page</p>
       </main>
     </>
   )

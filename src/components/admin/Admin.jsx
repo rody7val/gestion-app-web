@@ -3,7 +3,7 @@ function Admin() {
   return (
     <>
       <main>
-        <h4>Panel de control</h4>
+        <h4>Administración</h4>
         <br />
         <ul>
           <li>

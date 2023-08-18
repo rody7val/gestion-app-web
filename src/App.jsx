@@ -1,60 +1,42 @@
-import {useEffect, useState} from 'react';
-import {Routes, Route} from 'react-router-dom';
+import {useContext, useEffect} from 'react';
+import {Routes, Route, useNavigate} from 'react-router-dom';
 import RequireAuth from './routes/RequireAuth';
 
-import AuthGoogle from './components/AuthGoogle';
-import Header from './components/Header';
-import Home from './components/Home';
-import Footer from './components/Footer';
-import My from './components/My';
+import {
+  Header, Home, Footer,
+  Auth, Admin, My, // PrivacyPolicy, // TermOfService,
+} from './components';
 
-import Admin from './components/Admin.jsx';
-
-import firebase from 'firebase/compat/app';
-import { useNavigate } from 'react-router-dom';
-
-console.log(import.meta.env)
-
-const firebaseConfig = {
-  apiKey: import.meta.env.VITE_apiKey,
-  authDomain: import.meta.env.VITE_authDomain,
-  projectId: import.meta.env.VITE_projectId,
-  storageBucket: import.meta.env.VITE_storageBucket,
-  messagingSenderId: import.meta.env.VITE_messagingSenderId,
-  appId: import.meta.env.VITE_appId,
-  measurementId: import.meta.env.VITE_measurementId,
-};
+import {FirebaseContext} from './services/firebase/provider';
+import useAuth from './sections/useAuth';
 
 export default function App() {
+  const firebase = useContext(FirebaseContext);
+  const user = useAuth(firebase);
   const navigate = useNavigate();
-  const [auth, setAuth] = useState(null);
   
-  firebase.initializeApp(firebaseConfig);
-
   useEffect(() => {
-    firebase.auth().onAuthStateChanged( user => {
-      setAuth(user)
-      if (auth !== null && document.location.pathname === "/login") navigate("/admin");
-    })
+    if (user !== null && document.location.pathname === "/auth/login") navigate("/admin");
   })
   
   return (
     <>
-      <Header auth={auth} />
+      <Header auth={user} />
 
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/login' element={
-          <AuthGoogle />
+        <Route path='/auth/login' element={
+          <Auth />
         } />
+
         <Route path='/admin' element={
-          <RequireAuth auth={auth}>
+          <RequireAuth auth={user}>
             <Admin />
           </RequireAuth>
         } />
         <Route path='/admin/my' element={
-          <RequireAuth auth={auth}>
-            <My user={auth} />
+          <RequireAuth auth={user}>
+            <My user={user} />
           </RequireAuth>
         } />
       </Routes>
